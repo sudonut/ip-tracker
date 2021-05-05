@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>IP Address Tracker</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/37cb0d4f63.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div class="bg-wrap">
+        <div class="bg-image"></div>
+        <div class="ip-map" id="map"></div>
+      </div>
+      <div class="ip-info-wrap">
+        <h1>IP Address Tracker</h1>
+        <div class="ip-input-wrap">
+          <input type="text" id="ip-input" />
+          <button type="submit" id="ip-submit">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+        <div class="ip-info">
+          <div class="ip-content">
+            <h4>IP ADDRESS</h4>
+            <h2 id="ip-address">192.212.174.101</h2>
+          </div>
+          <div class="ip-content border">
+            <h4>LOCATION</h4>
+            <h2 id="ip-location">Brooklyn, NY 10001</h2>
+          </div>
+          <div class="ip-content border">
+            <h4>TIMEZONE</h4>
+            <h2 id="ip-timezone">UTC -05:00</h2>
+          </div>
+          <div class="ip-content border">
+            <h4>ISP</h4>
+            <h2 id="ip-isp">Space Station</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script/index.js" async defer></script>
+  </body>
+</html>

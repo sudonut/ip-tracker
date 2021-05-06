@@ -1,6 +1,11 @@
 const apiKey = "at_RZImwWGNn2H4hohnEiQPF1YpOqygR";
 
 document.getElementById("ip-submit").addEventListener("click", getIp);
+document.getElementById("ip-input").addEventListener("keyup", (e) => {
+  if (e.key === 'Enter') {
+    getIp();
+  }
+});
 
 let myMap = L.map("map").setView([51.505, -0.09], 13);
 let markerGroup = L.layerGroup().addTo(myMap);
@@ -26,7 +31,7 @@ function getIp() {
       const ipAddress = data.ip;
       const location = data.location.city;
       const timezone = data.location.timezone;
-      const isp = data.isp;
+      const isp = data.as.name;
       const lat = data.location.lat;
       const lon = data.location.lng;
 
@@ -43,5 +48,7 @@ function getIp() {
         L.marker([lat, lon], {icon: locationIcon}).addTo(markerGroup);
       }
       updateMap();
-    })
-}
+    });
+};
+
+getIp();

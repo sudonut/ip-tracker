@@ -33,7 +33,7 @@ body {
 .bg-image {
   width: 100%;
   height: 40%;
-  background-image: url(/imgs/pattern-bg.png);
+  background-image: url("imgs/pattern-bg.png");
   background-size: cover;
 }
 

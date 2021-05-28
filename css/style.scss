@@ -46,8 +46,8 @@ body {
   align-items: center;
   position: relative;
   z-index: 2;
-  justify-content: space-around;
-  height: 45%;
+  justify-content: space-evenly;
+  height: 36%;
   width: 100%;
 }
 
@@ -114,4 +114,40 @@ body {
   border-left-width: 1px;
   border-left-style: solid;
   border-color: gray;
+}
+
+@media (max-width: 1575px) {
+  .ip-content {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1323px) {
+  .ip-content {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .ip-info-wrap {
+    height: 26%;
+  }
+
+  .ip-info {
+    position: absolute;
+    top: 93%;
+    flex-direction: column;
+    height: 32rem;
+    width: 29%;
+  }
+
+  .ip-content {
+    width: 72%;
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .border {
+    border: none;
+  }
 }

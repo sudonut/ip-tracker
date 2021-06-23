@@ -41,7 +41,7 @@ async function getIp() {
   document.getElementById("ip-isp").innerHTML = isp;
 
   console.log(ipAddress, location, timezone);
-  console.log("GetIP Then has run")
+  
   function updateMap() {
     markerGroup.clearLayers();
     myMap.panTo({lat: lat, lng: lon});

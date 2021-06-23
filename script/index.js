@@ -27,10 +27,7 @@ async function getIp() {
   let ip = document.getElementById("ip-input").value;
   const response = await fetch(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ip}`);
   const ipData = await response.json();
-  return ipData;
-}
-
-getIp().then(ipData => {
+  
   const ipAddress = ipData.ip;
   const location = ipData.location.city;
   const timezone = ipData.location.timezone;
@@ -44,13 +41,13 @@ getIp().then(ipData => {
   document.getElementById("ip-isp").innerHTML = isp;
 
   console.log(ipAddress, location, timezone);
-
+  console.log("GetIP Then has run")
   function updateMap() {
     markerGroup.clearLayers();
     myMap.panTo({lat: lat, lng: lon});
     L.marker([lat, lon], {icon: locationIcon}).addTo(markerGroup);
   }
   updateMap();
-});
+}
 
 getIp();

@@ -13,6 +13,7 @@ let markerGroup = L.layerGroup().addTo(myMap);
 const locationIcon = L.icon({
   iconUrl: "imgs/icon-location.svg",
 });
+
 L.tileLayer(
   "https://api.maptiler.com/maps/topo/{z}/{x}/{y}.png?key=rbPdbXPCW2tS6QkeFTal"
 ,
@@ -22,33 +23,34 @@ L.tileLayer(
   }
 ).addTo(myMap);
 
-function getIp() {
+async function getIp() {
   let ip = document.getElementById("ip-input").value;
+  const response = await fetch(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ip}`);
+  const ipData = await response.json();
+  return ipData;
+}
 
-  fetch(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ip}`)
-    .then((response) => response.json())
-    .then((data) => {
-      const ipAddress = data.ip;
-      const location = data.location.city;
-      const timezone = data.location.timezone;
-      const isp = data.as.name;
-      const lat = data.location.lat;
-      const lon = data.location.lng;
+getIp().then(ipData => {
+  const ipAddress = ipData.ip;
+  const location = ipData.location.city;
+  const timezone = ipData.location.timezone;
+  const isp = ipData.as.name;
+  const lat = ipData.location.lat;
+  const lon = ipData.location.lng;
 
-      document.getElementById("ip-address").innerHTML = ipAddress;
-      document.getElementById("ip-location").innerHTML = location;
-      document.getElementById("ip-timezone").innerHTML = timezone;
-      document.getElementById("ip-isp").innerHTML = isp;
+  document.getElementById("ip-address").innerHTML = ipAddress;
+  document.getElementById("ip-location").innerHTML = location;
+  document.getElementById("ip-timezone").innerHTML = timezone;
+  document.getElementById("ip-isp").innerHTML = isp;
 
-      console.log(ipAddress, location, timezone);
+  console.log(ipAddress, location, timezone);
 
-      function updateMap() {
-        markerGroup.clearLayers();
-        myMap.panTo({lat: lat, lng: lon});
-        L.marker([lat, lon], {icon: locationIcon}).addTo(markerGroup);
-      }
-      updateMap();
-    });
-};
+  function updateMap() {
+    markerGroup.clearLayers();
+    myMap.panTo({lat: lat, lng: lon});
+    L.marker([lat, lon], {icon: locationIcon}).addTo(markerGroup);
+  }
+  updateMap();
+});
 
 getIp();

@@ -56,7 +56,7 @@ body {
   justify-content: center;
 }
 
-#ip-input {
+.ip-input-val {
   height: 3.5rem;
   width: 41rem;
   border: none;
@@ -66,7 +66,7 @@ body {
   border-top-left-radius: 9px;
 }
 
-#ip-submit {
+.ip-input-submit {
   width: 9%;
   background: black;
   border: none;
@@ -75,7 +75,7 @@ body {
   color: white;
 }
 
-#ip-submit:hover {
+.ip-input-submit:hover {
   background: rgb(85, 84, 84);
   cursor: pointer;
   transition: 0.2s;
@@ -130,15 +130,25 @@ body {
 
 @media (max-width: 1024px) {
   .ip-info-wrap {
-    height: 26%;
+    height: 20%;
+  }
+
+  .ip-input-val {
+    width: 23rem;
+    font-size: 1.2rem;
+  }
+
+  .ip-input-submit {
+    width: 2.5rem;
   }
 
   .ip-info {
     position: absolute;
-    top: 93%;
+    top: 82%;
+    margin-top: 2.4rem;
     flex-direction: column;
-    height: 32rem;
-    width: 45%;
+    height: 27rem;
+    max-width: 19rem;
   }
 
   .ip-content {
@@ -149,5 +159,23 @@ body {
   
   .border {
     border: none;
+  }
+}
+
+@media (max-width: 436px ) {
+  .ip-input-val {
+    height: 3rem;
+    width: 18rem;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+  }
+
+  .ip-info {
+    height: 19rem;
+    max-width: 14rem;
+  }
+
+  .ip-content {
+    font-size: 0.8rem;
   }
 }

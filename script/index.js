@@ -24,30 +24,32 @@ L.tileLayer(
 ).addTo(myMap);
 
 async function getIp() {
-  let ip = document.getElementById("ip-input").value;
-  const response = await fetch(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ip}`);
-  const ipData = await response.json();
-  
-  const ipAddress = ipData.ip;
-  const location = ipData.location.city;
-  const timezone = ipData.location.timezone;
-  const isp = ipData.as.name;
-  const lat = ipData.location.lat;
-  const lon = ipData.location.lng;
+  try {
+    let ip = document.getElementById("ip-input").value;
+    const response = await fetch(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ip}&domain=${ip}`);
 
-  document.getElementById("ip-address").innerHTML = ipAddress;
-  document.getElementById("ip-location").innerHTML = location;
-  document.getElementById("ip-timezone").innerHTML = timezone;
-  document.getElementById("ip-isp").innerHTML = isp;
+    const ipData = await response.json();
+    const ipAddress = ipData.ip;
+    const location = ipData.location.city;
+    const timezone = ipData.location.timezone;
+    const isp = ipData.as.name;
+    const lat = ipData.location.lat;
+    const lon = ipData.location.lng;
 
-  console.log(ipAddress, location, timezone);
-  
-  function updateMap() {
-    markerGroup.clearLayers();
-    myMap.panTo({lat: lat, lng: lon});
-    L.marker([lat, lon], {icon: locationIcon}).addTo(markerGroup);
+    document.getElementById("ip-address").innerHTML = ipAddress;
+    document.getElementById("ip-location").innerHTML = location;
+    document.getElementById("ip-timezone").innerHTML = timezone;
+    document.getElementById("ip-isp").innerHTML = isp;
+
+    function updateMap() {
+      markerGroup.clearLayers();
+      myMap.panTo({lat: lat, lng: lon});
+      L.marker([lat, lon], {icon: locationIcon}).addTo(markerGroup);
+    }
+    updateMap();
+  } catch(e) {
+    alert("Error fetching data! Is the domain name or ip correct?");
   }
-  updateMap();
 }
 
 getIp();

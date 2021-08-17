@@ -26,7 +26,7 @@ L.tileLayer(
 async function getIp() {
   try {
     let ip = document.getElementById("ip-input").value;
-    const response = await fetch(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ip}&domain=${ip}`);
+    const response = await fetch(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ip}&domain=${ip}`, { mode: "cors" });
 
     const ipData = await response.json();
     const ipAddress = ipData.ip;
